@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns: layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+		<link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap4.min.css" rel="stylesheet">
+		<!-- jQuery -->
+		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+		<!-- Popper.js -->
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+
+		<!-- Bootstrap 4 JavaScript -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+		<!-- DataTables -->
+		<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+		<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
+		<script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap4.min.js"></script>
+
+
+		<style type="text/css">
+			
+			.bs-header {
+				margin: 20px;
+			}
+			
+			.nav-item {
+				margin-left: 25px;
+			}
+			
+			.navbar .nav-link {
+				font-size: 20px;
+				color: white !important;
+			}
+			
+			.navbar .nav-link:hover {
+				color: lightblue !important;
+			}
+			
+			.main-title {
+				margin-top: 100px;
+				margin-bottom: 40px;
+				text-transform: uppercase;
+				color: blue;
+			}
+			
+		</style>
+	</head>
+	
+	<body>
+		<div align="center">
+			<div th:replace="layouts/common :: header">
+				Header
+			</div>
+			<section layout:fragment="content">
+				<p>Body Content</p>
+			</section>
+		</div>
+	</body>
+	
+</html>
