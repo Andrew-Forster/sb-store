@@ -2,6 +2,7 @@ package com.gcu.controller;
 
 import jakarta.validation.Valid;
 
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,7 @@ import com.gcu.model.RegistrationModel;
 public class RegistrationController implements WebMvcConfigurer {
 	
 	@Override
-	public void addViewControllers(ViewControllerRegistry registry) {
+	public void addViewControllers(@NonNull ViewControllerRegistry registry) {
 		registry.addViewController("/mainPage").setViewName("mainPage");
 	}
 

@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-						layout:decorate="layouts/defaultTemplate">
-						
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Login</title>
-	</head>
-	
-	<body>
-		<div layout:fragment="content" action="/main">
-			<form class="login-form" action="#" th:action="@{/login}" th:object="${loginModel}" method="post">
-				<img class="logo" th:src="@{/images/gameShopLogo.svg}">
-				<div  class="input-container">
-					<label class="login-labels" for="username">Username:</label>
-					<input class="login-input"  type="text" th:field="*{username}">
-					<label class="login-labels" for="password">Password:</label>
-					<input class="login-input" type="password" th:field="*{password}">
-				</div>
-				<div class="line"></div>
-				<div class="input-container">
-					<input class="button" type="submit" value="Sign-In">
-					<p class="help-text">Don't have an account <a class="help-link" href="/register"><u>Click Here</u></a> to register</p>
-				</div>
-			</form>
-		</div>						
-	</body>	
+	layout:decorate="layouts/defaultTemplate">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title>
+</head>
+
+<body>
+	<div layout:fragment="content" action="/main">
+		<form class="login-form" action="#" th:action="@{/login}" th:object="${loginModel}" method="post">
+			<img class="logo" th:src="@{/images/gameShopLogo.svg}" alt="Game Shop Logo of a game controller">
+			<div class="input-container">
+				<label class="login-labels" for="username">Username:</label>
+				<input class="login-input" type="text" th:field="*{username}" id="username">
+				<label class="login-labels" for="password">Password:</label>
+				<input class="login-input" type="password" th:field="*{password}" id="password">
+			</div>
+			<div class="line"></div>
+			<div class="input-container">
+				<input class="button" type="submit" value="Sign-In">
+				<p class="help-text">Don't have an account <a class="help-link" href="/register"><u>Click Here</u></a>
+					to register</p>
+			</div>
+		</form>
+	</div>
+</body>
+
 </html>
 
 
@@ -52,7 +55,7 @@
 	}
 
 	.login-input {
-		width:400px;
+		width: 400px;
 		height: 45px;
 		outline: black solid 2px;
 		border-radius: 5px;
@@ -63,7 +66,7 @@
 		align-self: self-start;
 	}
 
-	.line{
+	.line {
 		width: 500px;
 		border-bottom: 1px solid black;
 		margin-top: 36px;
@@ -80,8 +83,10 @@
 		font-size: x-large;
 		font-weight: 600;
 	}
-	
-	.button:hover {background-color: #1e1f20}
+
+	.button:hover {
+		background-color: #1e1f20
+	}
 
 	.button:active {
 		background-color: #1e1f20;

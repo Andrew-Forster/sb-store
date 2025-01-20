@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-						layout:decorate="layouts/defaultTemplate">
-	<head>
-		<meta charset="UTF-8">
-		<title>Main Page</title>
-	</head>
-							
-	<body>
-		<div layout:fragment="content">
-			<img th:src="@{/images/gameShopMain.jpg}" style="width:1500px"/><br/>
-		</div>						
-	</body>	
-	
+	layout:decorate="layouts/defaultTemplate">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Main Page</title>
+</head>
+
+<body>
+	<div layout:fragment="content">
+		<img th:src="@{/images/gameShopMain.png}" style="width:1500px" alt="Temporary Placeholder"/><br />
+	</div>
+</body>
+
 </html>
