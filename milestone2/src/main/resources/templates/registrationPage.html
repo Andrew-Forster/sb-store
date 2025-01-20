@@ -9,8 +9,110 @@
 							
 	<body>
 		
-		<div layout:fragment="content"></div>
+		<div layout:fragment="content">
+			<form class="register-form" th:action="@{/register}" th:object="${registrationModel}" method="post">
+				<img class="logo" th:src="@{/images/gameShopLogo.svg}">
+				<div  class="grid-container">
+					<div class="grid-item">
+						<label class="register-labels" for="firstName">First Name:</label>
+						<input class="register-input"  type="text" th:field="*{firstName}">
+						<p class="error-msg" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+					</div>
+					<div class="grid-item">
+						<label class="register-labels" for="lastName">Last Name:</label>
+						<input class="register-input" type="text" th:field="*{lastName}">
+						<p class="error-msg" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+					</div>
+					<div class="grid-item">
+						<label class="register-labels" for="username">Username:</label>
+						<input class="register-input"  type="text" th:field="*{username}">
+						<p class="error-msg" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+					</div>
+					<div class="grid-item">
+						<label class="register-labels" for="password">Password:</label>
+						<input class="register-input" type="password" th:field="*{password}">
+						<p class="error-msg" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+					</div>
+					<div class="grid-item">
+						<label class="register-labels" for="email">Email:</label>
+						<input class="register-input" type="text" th:field="*{email}">
+						<p class="error-msg" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+					</div>
+					<div class="grid-item">
+						<label class="register-labels" for="phoneNumber">Phone Number:</label>
+						<input class="register-input" type="text" th:field="*{phoneNumber}">
+						<p class="error-msg" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></p>
+					</div>
+				</div>
+				<input class="button" type="submit" value="Register">
+			</form>
+		</div>
 								
 	</body>
 	
 </html>
+
+<style>
+	.register-form {
+		width: 1000px;
+		background-color: rgb(223, 223, 223);
+		border-radius: 25px;
+		outline: black solid 2px;
+		margin: auto;
+		padding: 10px;
+	}
+
+	.logo {
+		width: 160px;
+		margin-top: 36px;
+	}
+
+	.grid-container {
+		display: grid;
+		column-gap: 18px;
+		row-gap: 36px;
+		grid-template-columns: auto auto;
+		grid-auto-rows: 1fr
+	}
+	.grid-item {
+		display: flex;
+		flex-direction: column;
+		width: 400px;
+		margin: auto;
+	}
+
+	.register-input {
+		width:400px;
+		height: 45px;
+		outline: black solid 2px;
+		border-radius: 5px;
+	}
+
+	.register-labels {
+		align-self: self-start;
+	}
+
+	.button {
+		margin-top: 36px;
+		margin-bottom: 20px;
+		width: 400px;
+		height: 60px;
+		border-radius: 5px;
+		background-color: #343A40;
+		color: #FFFFFF;
+		font-size: x-large;
+		font-weight: 600;
+	}
+	
+	.button:hover {background-color: #1e1f20}
+
+	.button:active {
+		background-color: #1e1f20;
+		box-shadow: 0 5px #666;
+		transform: translateY(4px);
+	}
+
+	.error-msg {
+		color:red;
+	}
+</style>
