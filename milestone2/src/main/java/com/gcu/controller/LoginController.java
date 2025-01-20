@@ -20,6 +20,6 @@ public class LoginController {
 	@PostMapping("/login")
 	public String submitLogin(@ModelAttribute LoginModel loginModel, Model model) {
 		model.addAttribute("loginModel", loginModel);
-    	return "mainPage";
+    	return "redirect:/main";
 	}
 }
