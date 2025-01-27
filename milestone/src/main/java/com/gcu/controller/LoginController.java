@@ -8,23 +8,21 @@ import com.gcu.service.CustomerLoginService;
 import com.gcu.service.AdminLoginService;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.PostMapping; 
 
 @Controller
 public class LoginController {
-	
-	
+
 	private final AdminLoginService adminLoginService;
 	private final CustomerLoginService customerLoginService;
-	
+
 	// Dependency injection through constructor
 	public LoginController(AdminLoginService adminLoginService,
-						   CustomerLoginService customerLoginService) {
+			CustomerLoginService customerLoginService) {
 		this.adminLoginService = adminLoginService;
 		this.customerLoginService = customerLoginService;
 	}
-	
+
 	@GetMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("loginModel", new LoginModel());
@@ -33,12 +31,12 @@ public class LoginController {
 
 	@PostMapping("/login")
 	public String submitLogin(@ModelAttribute LoginModel loginModel, Model model) {
-		
+
 		String username = loginModel.getUsername();
 		String password = loginModel.getPassword();
-		
+
 		boolean authenticated;
-		
+
 		if ("admin".equals(username)) {
 			authenticated = adminLoginService.authenticate(username, password);
 			if (authenticated)
@@ -51,10 +49,10 @@ public class LoginController {
 				return "redirect:/displayedProducts";
 			else
 				model.addAttribute("error", "Invalid username or password");
-		} else 
+		} else
 			model.addAttribute("error", "Invalid username or password");
-		
+
 		return "loginPage";
-			
+
 	}
 }
