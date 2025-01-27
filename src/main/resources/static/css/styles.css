@@ -1,4 +1,6 @@
-
+* {
+    box-sizing: border-box;
+}
 
 html {
     margin: 0 0 0 0;
@@ -10,8 +12,12 @@ html {
     animation: screenLock 7s ease-out forwards;
     -webkit-user-select: none;
     user-select: none;
-    background: var(--main-gradient);
+    background: var(--bg);
     background-size: cover;
     object-fit: cover;
     z-index: -1;
+}
+
+body {
+    background: var(--bg);
 }
