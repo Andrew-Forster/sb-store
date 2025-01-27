@@ -23,12 +23,14 @@ public class LoginController {
 		this.customerLoginService = customerLoginService;
 	}
 
+	// GET request to display the login page
 	@GetMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("loginModel", new LoginModel());
 		return "loginPage";
 	}
 
+	// POST request to authenticate the user
 	@PostMapping("/login")
 	public String submitLogin(@ModelAttribute LoginModel loginModel, Model model) {
 

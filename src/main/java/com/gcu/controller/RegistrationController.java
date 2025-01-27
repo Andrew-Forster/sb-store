@@ -27,12 +27,14 @@ public class RegistrationController implements WebMvcConfigurer {
 	public void addViewControllers(@NonNull ViewControllerRegistry registry) {
 		registry.addViewController("/mainPage").setViewName("mainPage");
 	}
-
+	
+	// GET request to display the registration page
 	@GetMapping("/register")
 	public String showRegistration(RegistrationModel registrationModel) {
 		return "registrationPage";
 	}
 
+	// POST request to create a new user
 	@PostMapping("/register")
 	public String checkPersonInfo(@Valid RegistrationModel registrationModel, BindingResult bindingResult) {
 		String username = registrationModel.getUsername();

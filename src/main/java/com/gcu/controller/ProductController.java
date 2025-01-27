@@ -13,12 +13,14 @@ import jakarta.validation.Valid;
 @Controller
 public class ProductController {
 
+	// GET request to display the product creation page
 	@GetMapping("/product/create")
 	public String productCreationDisplay(Model model) {
 		model.addAttribute("product", new ProductModel());
 		return "products/productCreation";
 	}
-
+	
+	// POST request to create a new product
 	@PostMapping("/product/create")
 	public String createProduct(@Valid ProductModel product, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
