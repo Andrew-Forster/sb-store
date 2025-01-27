@@ -13,9 +13,9 @@
 		<form class="form bg-tint" action="#" th:action="@{/login}" th:object="${loginModel}" method="post">
 			<img class="logo" th:src="@{/images/gameShopLogo.svg}" alt="Game Shop Logo of a game controller">
 			<div class="input-container form-group ">
-				<label class="" for="username">Username:</label>
+				<label class="text-left mt-3" for="username">Username:</label>
 				<input class="form-control" type="text" name="username" id="username" placeholder="Username">
-				<label class="" for="password">Password:</label>
+				<label class="text-left mt-3" type="password" aria-describedby="passwordHelpBlock" for="password">Password:</label>
 				<input class="form-control" type="password" name="password" id="password" placeholder="Password">
 			</div>
 			<div class="line"></div>
