@@ -10,22 +10,22 @@
 
 <body>
 	<div layout:fragment="content" action="/productCreation">
-		<form class="login-form" action="#" th:action="@{/login}" th:object="${loginModel}" method="post">
+		<form class="form bg-tint" action="#" th:action="@{/login}" th:object="${loginModel}" method="post">
 			<img class="logo" th:src="@{/images/gameShopLogo.svg}" alt="Game Shop Logo of a game controller">
-			<div class="input-container">
-				<label class="login-labels" for="username">Username:</label>
-				<input class="login-input" type="text" name ="username" id="username">
-				<label class="login-labels" for="password">Password:</label>
-				<input class="login-input" type="password" name="password" id="password">
+			<div class="input-container form-group ">
+				<label class="text-left mt-3" for="username">Username:</label>
+				<input class="form-control" type="text" name="username" id="username" placeholder="Username">
+				<label class="text-left mt-3" type="password" aria-describedby="passwordHelpBlock" for="password">Password:</label>
+				<input class="form-control" type="password" name="password" id="password" placeholder="Password">
 			</div>
 			<div class="line"></div>
 			<div class="input-container">
-				<input class="button" type="submit" value="Sign-In">
-				<p class="help-text">Don't have an account <a class="help-link" href="/register"><u>Click Here</u></a>
-					to register</p>
-					
-				<p th:if="${error}" th:text="${error}" style="color: red"></p>
-					
+				<button class="btn btn-primary mt-4 py-2" type="submit">Sign-In</button>
+				<p class="help-text">Don't have an account? <a class="help-link" href="/register"><u>Register</u></a>
+				</p>
+
+				<p class="text-left text-danger" th:if="${error}" th:text="${error}"></p>
+
 			</div>
 		</form>
 	</div>
@@ -37,19 +37,6 @@
 <style>
 	* {
 		box-sizing: border-box;
-	}
-	
-	.login-form {
-		height: 750px;
-		width: 90%;
-		max-width: 500px;
-		margin: 25px;
-		background-color: rgb(223, 223, 223);
-		border-radius: 25px;
-		outline: black solid 2px;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
 	}
 
 	.logo {
