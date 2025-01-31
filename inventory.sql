@@ -1,0 +1,4 @@
+ALTER TABLE games AUTO_INCREMENT = 1;
+SELECT AUTO_INCREMENT FROM information_schema.TABLES 
+WHERE TABLE_NAME = 'games' AND TABLE_SCHEMA = 'inventory';
+
