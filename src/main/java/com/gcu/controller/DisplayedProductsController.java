@@ -8,7 +8,7 @@ public class DisplayedProductsController {
 	
 	@GetMapping("/displayedProducts")
 	public String displayProducts() {
-		return "products/displayedProducts";
+		return "displayedProducts";
 	}
 
 }
