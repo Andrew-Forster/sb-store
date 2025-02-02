@@ -33,7 +33,7 @@ public class LoginController {
 	// POST request to authenticate the user
 	@PostMapping("/login")
 	public String submitLogin(@ModelAttribute LoginModel loginModel, Model model) {
-
+		
 		String username = loginModel.getUsername();
 		String password = loginModel.getPassword();
 
@@ -41,8 +41,9 @@ public class LoginController {
 
 		if ("admin".equals(username)) {
 			authenticated = adminLoginService.authenticate(username, password);
-			if (authenticated)
+			if (authenticated) {
 				return "redirect:/product/create";
+				}
 			else
 				model.addAttribute("error", "Invalid username or password");
 		} else if ("customer".equals(username)) {

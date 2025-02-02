@@ -7,6 +7,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
 public class ProductModel {
+	
+	private Long id;
 
     @NotBlank(message = "Product name is required")
     private String name;
@@ -20,8 +22,29 @@ public class ProductModel {
 
     @NotBlank(message = "Description is required")
     private String description;
-
+    
+    public ProductModel() {
+    	super();
+    }
+    
+    public ProductModel(Long id, String name, BigDecimal price, 
+    					String category, String description) {
+    	this.id = id;
+    	this.name = name;
+    	this.price = price;
+    	this.category = category;
+    	this.description = description;
+    }
+    
     // Getters and Setters
+    public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
     public String getName() {
         return name;
     }
