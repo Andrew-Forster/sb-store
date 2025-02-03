@@ -8,7 +8,4 @@ import org.springframework.data.repository.CrudRepository;
 import com.gcu.data.entity.GameEntity;
 
 public interface GamesRepository extends CrudRepository<GameEntity, Long> {
-@Override
-	@Query(value="SELECT * FROM GAMES")
-	public List<GameEntity> findAll();
 }
