@@ -1,5 +1,7 @@
 package com.gcu.model;
 
+import java.math.BigDecimal;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -11,7 +13,7 @@ public class ProductModel {
 
     @NotNull(message = "Price is required")
     @Positive(message = "Price must be positive")
-    private Double price;
+    private BigDecimal price;
 
     @NotBlank(message = "Category is required")
     private String category;
@@ -28,11 +30,11 @@ public class ProductModel {
         this.name = name;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
