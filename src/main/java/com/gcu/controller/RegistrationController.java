@@ -39,7 +39,7 @@ public class RegistrationController implements WebMvcConfigurer {
 	// GET request to display the registration page
 	@GetMapping("/register")
 	public String showRegistration(RegistrationModel registrationModel) {
-		return "registrationPage"; 
+		return "register/newUser"; 
 	}
 
 
