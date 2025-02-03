@@ -21,6 +21,10 @@ public class ProductModel {
     @NotBlank(message = "Description is required")
     private String description;
 
+    public ProductModel() {
+    	super();
+    }
+
     // Getters and Setters
     public String getName() {
         return name;
