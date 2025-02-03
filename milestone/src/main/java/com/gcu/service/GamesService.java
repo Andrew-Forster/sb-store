@@ -4,18 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gcu.data.entity.GameEntity;
-import com.gcu.data.repository.GamesRepositoryInterface;
+import com.gcu.data.repository.GamesRepository;
 
 @Service
 public class GamesService {
 	
 	@Autowired
-	private GamesRepositoryInterface gamesRepositoryInterface;
+	private GamesRepository gamesRepository;
 	
 	public void addGame(GameEntity game) {
-		gamesRepositoryInterface.save(game);
+		gamesRepository.save(game);
 	}
-	
-	
 
 }

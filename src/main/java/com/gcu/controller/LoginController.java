@@ -42,7 +42,7 @@ public class LoginController {
 		if ("admin".equals(username)) {
 			authenticated = adminLoginService.authenticate(username, password);
 			if (authenticated)
-				return "redirect:/product/create";
+				return "redirect:/productCreation";
 			else
 				model.addAttribute("error", "Invalid username or password");
 		} else if ("customer".equals(username)) {

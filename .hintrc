@@ -8,7 +8,10 @@
       {
         "ignore": [
           "text-wrap",
-          "text-wrap: balance"
+          "text-wrap: balance",
+          "overscroll-behavior",
+          "overscroll-behavior: none",
+          "backdrop-filter"
         ]
       }
     ],

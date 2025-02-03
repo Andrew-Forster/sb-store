@@ -6,11 +6,11 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Table("GAMES")
+@Table("games")
 public class GameEntity {
 	
 	@Id
-	private Long id;
+	private long id;
 	
 	@Column("NAME")
 	private String name;
@@ -28,24 +28,23 @@ public class GameEntity {
 		super();
 	}
 	
-	public GameEntity(Long id,
-					  String name,
+	public GameEntity(String name,
 					  BigDecimal price,
 					  String category,
 					  String description) {
-		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.category = category;
 		this.description = description;
-			
+		
+		
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
