@@ -1,11 +1,20 @@
 package com.gcu.data.repository;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
+@Repository
+public class GamesRepository {
+	
+	private final JdbcTemplate jdbcTemplate;
+	
+	public GamesRepository(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	public void resetId() {
+		
+		String resetSql = "ALTER TABLE GAMES AUTO_INCREMENT = 1";
+		jdbcTemplate.execute(resetSql);
+	}
 
-import org.springframework.data.jdbc.repository.query.Query;
-import org.springframework.data.repository.CrudRepository;
-
-import com.gcu.data.entity.GameEntity;
-
-public interface GamesRepository extends CrudRepository<GameEntity, Long> {
 }
