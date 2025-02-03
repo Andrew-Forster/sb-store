@@ -4,8 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 import com.gcu.model.LoginModel;
-import com.gcu.service.CustomerLoginService;
-import com.gcu.service.AdminLoginService;
+import com.gcu.service.UserLoginService;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping; 
@@ -13,14 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class LoginController {
 
-	private final AdminLoginService adminLoginService;
-	private final CustomerLoginService customerLoginService;
+	private final UserLoginService userLoginService;
 
 	// Dependency injection through constructor
-	public LoginController(AdminLoginService adminLoginService,
-			CustomerLoginService customerLoginService) {
-		this.adminLoginService = adminLoginService;
-		this.customerLoginService = customerLoginService;
+	public LoginController(UserLoginService userLoginService) {
+		this.userLoginService = userLoginService;
 	}
 
 	// GET request to display the login page
@@ -31,30 +27,18 @@ public class LoginController {
 	}
 
 	// POST request to authenticate the user
-	@PostMapping("/login")
-	public String submitLogin(@ModelAttribute LoginModel loginModel, Model model) {
+    @PostMapping("/login")
+    public String submitLogin(@ModelAttribute LoginModel loginModel, Model model) {
+        String username = loginModel.getUsername();
+        String password = loginModel.getPassword();
 
-		String username = loginModel.getUsername();
-		String password = loginModel.getPassword();
+        boolean authenticated = userLoginService.authenticate(username, password);
 
-		boolean authenticated;
-
-		if ("admin".equals(username)) {
-			authenticated = adminLoginService.authenticate(username, password);
-			if (authenticated)
-				return "redirect:/product/create";
-			else
-				model.addAttribute("error", "Invalid username or password");
-		} else if ("customer".equals(username)) {
-			authenticated = customerLoginService.authenticate(username, password);
-			if (authenticated)
-				return "redirect:/displayedProducts";
-			else
-				model.addAttribute("error", "Invalid username or password");
-		} else
-			model.addAttribute("error", "Invalid username or password");
-
-		return "loginPage";
-
-	}
+        if (authenticated) {
+            return "redirect:/product/create";
+        } else {
+            model.addAttribute("error", "Invalid username or password");
+            return "loginPage";
+        }
+    }
 }
