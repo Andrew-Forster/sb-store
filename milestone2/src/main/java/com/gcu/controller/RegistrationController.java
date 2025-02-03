@@ -22,7 +22,7 @@ public class RegistrationController implements WebMvcConfigurer {
 
 	@GetMapping("/register")
 	public String showRegistration(RegistrationModel registrationModel) {
-		return "registrationPage";
+		return "register/newUser";
 	}
 
 	@PostMapping("/register")
@@ -30,7 +30,7 @@ public class RegistrationController implements WebMvcConfigurer {
 		System.err.println(bindingResult.hasErrors());
 		System.err.println(registrationModel);
 		if (bindingResult.hasErrors()) {
-			return "registrationPage";
+			return "register/newUser";
 		}
 
 		return "redirect:/main";

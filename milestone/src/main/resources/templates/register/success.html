@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="layouts/defaultTemplate">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Created</title>
+</head>
+
+<body>
+    <div layout:fragment="content" class="container mt-5">
+        <h1>User Created Successfully!</h1>
+        <div class="alert alert-success">
+            <h4 class="alert-heading">User Details:</h4>
+            <p><strong>User Name:</strong> <span th:text="${user.username}"></span></p>
+            <p><strong>First Name:</strong> <span th:text="${user.firstName}"></span></p>
+            <p><strong>Last Name:</strong> <span th:text="${user.lastName}"></span></p>
+            <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+            <p><strong>Phone Number:</strong> <span th:text="${user.phoneNumber}"></span></p>
+        </div>
+        <a href="/login" class="btn btn-primary">Go to Login!</a>
+    </div>
+</body>
+
+</html>
