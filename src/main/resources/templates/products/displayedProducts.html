@@ -31,8 +31,8 @@
 					<td><h5 th:text="${game.price}"></h5></td>
 					<td><h5 th:text="${game.category}"></h5></td>
 					<td><h5 th:text="${game.description}"></h5></td>
-					<td class="d-flex justify-content-center align-items-center">
-						<button class="btn btn-primary">Buy Game</button>
+					<td class="justify-content-center align-items-center">
+						<a th:href="@{/product/details/{id}(id=${game.id})}" class="w-100 btn btn-primary">View Game</a>
 					</td>
 				</tr>
 			</tbody>

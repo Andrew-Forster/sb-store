@@ -97,4 +97,13 @@ public class ProductController {
 		return "redirect:/product/create";
 	}
 
+	@GetMapping("/product/details/{id}")
+	public String productDetails(@PathVariable Long id, Model model) {
+		Optional<GameEntity> game = gamesRepository.findById(id);
+		if (game.isPresent()) {
+			model.addAttribute("game", game.get());
+			return "products/productDetails";
+		} else
+			throw new IllegalArgumentException("Invalid product ID: " + id);
+	}
 }
