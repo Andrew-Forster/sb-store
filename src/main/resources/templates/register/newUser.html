@@ -11,42 +11,42 @@
 <body>
 
 	<div layout:fragment="content">
-		<form class="register-form" th:action="@{/register}" th:object="${registrationModel}" method="post">
+		<form class="bg-tint border-tint register-form" th:action="@{/register}" th:object="${registrationModel}" method="post">
 			<img class="logo" th:src="@{/images/gameShopLogo.svg}" alt="Game Shop Logo of a game controller">
 			<div class="flex-container my-4">
-				<div class="flex-item col-12 col-sm-6">
+				<div class="flex-item col-sm-6 col-12">
 					<label class="register-labels" for="firstName">First Name:</label>
 					<input class="form-control mb-3" type="text" th:field="*{firstName}" id="firstName" placeholder="John">
 					<p class="error-msg" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
 				</div>
-				<div class="flex-item col-12 col-sm-6">
+				<div class="flex-item col-sm-6 col-12">
 					<label class="register-labels" for="lastName">Last Name:</label>
 					<input class="form-control mb-3" type="text" th:field="*{lastName}" id="lastName" placeholder="Doe">
 					<p class="error-msg" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
 				</div>
-				<div class="flex-item col-12 col-sm-6">
+				<div class="flex-item col-sm-6 col-12">
 					<label class="register-labels" for="username">Username:</label>
 					<input class="form-control mb-3" type="text" th:field="*{username}" id="username" placeholder="johndoe123">
 					<p class="error-msg" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
 				</div>
-				<div class="flex-item col-12 col-sm-6">
+				<div class="flex-item col-sm-6 col-12">
 					<label class="register-labels" for="password">Password:</label>
 					<input class="form-control mb-3" type="password" th:field="*{password}" id="password" aria-describedby="passwordHelpBlock" placeholder="Password">
 					<p class="error-msg" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
 				</div>
-				<div class="flex-item col-12 col-sm-6">
+				<div class="flex-item col-sm-6 col-12">
 					<label class="register-labels" for="email">Email:</label>
 					<input class="form-control mb-3" type="text" th:field="*{email}" id="email" placeholder="johndoe@example.com">
 					<p class="error-msg" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
 				</div>
-				<div class="flex-item col-12 col-sm-6">
+				<div class="flex-item col-sm-6 col-12">
 					<label class="register-labels" for="phoneNumber">Phone Number:</label>
 					<input class="form-control mb-3" type="tel" th:field="*{phoneNumber}" id="phoneNumber" placeholder="123-456-7890">
 					<p class="error-msg" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></p>
 				</div>
 			</div>
 			<div class="col-12 col-md-6">
-				<button class="btn btn-primary w-100" type="submit">Register</button>
+				<button class="w-100 btn btn-primary" type="submit">Register</button>
 			</div>
 		</form>
 	</div>
@@ -64,9 +64,7 @@
 	.register-form {
 		width: 90%;
 		max-width: 1000px;
-		background-color: rgb(223, 223, 223);
 		border-radius: 25px;
-		outline: black solid 2px;
 		margin: auto;
 		padding: 36px;
 	}
