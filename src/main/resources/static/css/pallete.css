@@ -1,8 +1,10 @@
 /* Variable Colors */
 :root {
-    --bg: rgb(215, 216, 218);
-    --nav: rgba(40, 41, 43, 0.603);
-    --tint: rgb(223, 223, 223);
+    --bg: rgb(43, 44, 45);
+    --nav: rgba(188, 189, 190, 0.603);
+    --tint: rgba(105, 104, 104, 0.7);
+    --text: rgb(234, 231, 231);
+    --border: rgb(31, 31, 31);
 }
 
 .bg-nav {
@@ -12,4 +14,8 @@
 
 .bg-tint {
     background-color: var(--tint);
+}
+
+.border-tint {
+    border: 2px solid var(--border);
 }

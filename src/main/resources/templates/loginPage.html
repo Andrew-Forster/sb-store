@@ -10,21 +10,21 @@
 
 <body>
 	<div layout:fragment="content" action="/productCreation">
-		<form class="form bg-tint" action="#" th:action="@{/login}" th:object="${loginModel}" method="post">
+		<form class="bg-tint border-tint form" action="#" th:action="@{/login}" th:object="${loginModel}" method="post">
 			<img class="logo" th:src="@{/images/gameShopLogo.svg}" alt="Game Shop Logo of a game controller">
-			<div class="input-container form-group ">
-				<label class="text-left mt-3" for="username">Username:</label>
+			<div class="form-group input-container">
+				<label class="mt-3 text-left" for="username">Username:</label>
 				<input class="form-control" type="text" name="username" id="username" placeholder="Username">
-				<label class="text-left mt-3" type="password" aria-describedby="passwordHelpBlock" for="password">Password:</label>
+				<label class="mt-3 text-left" type="password" aria-describedby="passwordHelpBlock" for="password">Password:</label>
 				<input class="form-control" type="password" name="password" id="password" placeholder="Password">
 			</div>
 			<div class="line"></div>
 			<div class="input-container">
-				<button class="btn btn-primary mt-4 py-2" type="submit">Sign-In</button>
+				<button class="mt-4 py-2 btn btn-primary" type="submit">Sign-In</button>
 				<p class="help-text">Don't have an account? <a class="help-link" href="/register"><u>Register</u></a>
 				</p>
 
-				<p class="text-left text-danger" th:if="${error}" th:text="${error}"></p>
+				<p class="text-danger text-left" th:if="${error}" th:text="${error}"></p>
 
 			</div>
 		</form>

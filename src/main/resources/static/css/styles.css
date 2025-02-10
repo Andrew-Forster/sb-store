@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    transition-duration: 0.2s;
 }
 
 html {
@@ -16,12 +17,32 @@ html {
     background-size: cover;
     object-fit: cover;
     z-index: -1;
+
 }
 
-body {
-    background: var(--bg);
+html body {
+    background: transparent;
+    color: var(--text);
+}
+
+.table {
+    color: var(--text) !important;
+}
+
+.table-hover tbody tr:hover {
+    color: var(--nav) !important;
 }
 
 input {
     caret-color: black;
+}
+
+canvas#neuro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    opacity: .95;
+    z-index: -1;
 }

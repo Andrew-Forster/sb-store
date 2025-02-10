@@ -6,6 +6,6 @@ import com.gcu.data.entity.GameEntity;
 public interface GamesRepositoryInterface extends CrudRepository<GameEntity, Long> {
 	
 	@Override
-	@Query(value="SELECT * FROM GAMES")
+	@Query("SELECT * FROM GAMES")
 	public List<GameEntity> findAll();
 }

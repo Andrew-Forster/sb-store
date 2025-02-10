@@ -3,7 +3,7 @@ package com.gcu.service;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RegistrationService implements RegistreationInterface {
+public class RegistrationService implements RegistrationInterface {
 
 	@Override
 	public boolean validUsername(String username) {
