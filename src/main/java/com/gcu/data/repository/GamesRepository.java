@@ -1,11 +1,12 @@
 package com.gcu.data.repository;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class GamesRepository {
 	
-	private final JdbcTemplate jdbcTemplate;
+private final JdbcTemplate jdbcTemplate;
 	
 	public GamesRepository(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
