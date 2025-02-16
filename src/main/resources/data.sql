@@ -56,9 +56,9 @@ VALUES ('Manager', 'Manager of the game store'),
 ('Customer', 'Customer of the game store');
 
 INSERT IGNORE INTO USERS (username, password, first_name, last_name, email, phone_number) 
-VALUES ('Manager', 'Root', 'John', 'Wick', 'John.Wick@outlook.com', '555-555-5555'),
-('Employee', 'Root', 'Peter', 'Quill', 'Peter.Quill@outlook.com', '333-333-3333'),
-('Customer', 'Root', 'Tony', 'Stark', 'Tony.Stark@outlook.com', '222-222-2222');
+VALUES ('Manager', '$2a$10$lzUS3jHeYAytFUf0q10IiuM7Lyyql9f0Vz3tAgrTe2BRpd7llk0Qa', 'John', 'Wick', 'John.Wick@outlook.com', '555-555-5555'),
+('Employee', '$2a$10$lzUS3jHeYAytFUf0q10IiuM7Lyyql9f0Vz3tAgrTe2BRpd7llk0Qa', 'Peter', 'Quill', 'Peter.Quill@outlook.com', '333-333-3333'),
+('Customer', '$2a$10$lzUS3jHeYAytFUf0q10IiuM7Lyyql9f0Vz3tAgrTe2BRpd7llk0Qa', 'Tony', 'Stark', 'Tony.Stark@outlook.com', '222-222-2222');
 
 INSERT IGNORE INTO USER_ROLES (user_id, role_id) 
 VALUES (1, 1), (2, 2), (3, 3);

@@ -12,33 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class LoginController {
 
-	private final UserLoginService userLoginService;
-
-	// Dependency injection through constructor
-	public LoginController(UserLoginService userLoginService) {
-		this.userLoginService = userLoginService;
-	}
-
 	// GET request to display the login page
 	@GetMapping("/login")
-	public String login(Model model) {
-		model.addAttribute("loginModel", new LoginModel());
+	public String login() {
 		return "loginPage";
 	}
 
-	// POST request to authenticate the user
-    @PostMapping("/login")
-    public String submitLogin(@ModelAttribute LoginModel loginModel, Model model) {
-        String username = loginModel.getUsername();
-        String password = loginModel.getPassword();
-
-        boolean authenticated = userLoginService.authenticate(username, password);
-
-        if (authenticated) {
-            return "redirect:/product/create";
-        } else {
-            model.addAttribute("error", "Invalid username or password");
-            return "loginPage";
-        }
-    }
 }

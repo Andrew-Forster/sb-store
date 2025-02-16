@@ -11,38 +11,33 @@
 <body>
 
 	<div layout:fragment="content">
-		<form class="bg-tint border-tint register-form" th:action="@{/register}" th:object="${registrationModel}" method="post">
+		<form class="bg-tint border-tint register-form" action="/register" th:action="@{/register}" method="post">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			<img class="logo" th:src="@{/images/gameShopLogo.svg}" alt="Game Shop Logo of a game controller">
 			<div class="flex-container my-4">
 				<div class="flex-item col-sm-6 col-12">
 					<label class="register-labels" for="firstName">First Name:</label>
-					<input class="form-control mb-3" type="text" th:field="*{firstName}" id="firstName" placeholder="John">
-					<p class="error-msg" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+					<input class="form-control mb-3" type="text" id="firstName" name="firstName" placeholder="John" required>
 				</div>
 				<div class="flex-item col-sm-6 col-12">
 					<label class="register-labels" for="lastName">Last Name:</label>
-					<input class="form-control mb-3" type="text" th:field="*{lastName}" id="lastName" placeholder="Doe">
-					<p class="error-msg" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+					<input class="form-control mb-3" type="text" id="lastName" name="lastName" placeholder="Doe" required>
 				</div>
 				<div class="flex-item col-sm-6 col-12">
 					<label class="register-labels" for="username">Username:</label>
-					<input class="form-control mb-3" type="text" th:field="*{username}" id="username" placeholder="johndoe123">
-					<p class="error-msg" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+					<input class="form-control mb-3" type="text" id="username" name="username" placeholder="johndoe123" required>
 				</div>
 				<div class="flex-item col-sm-6 col-12">
 					<label class="register-labels" for="password">Password:</label>
-					<input class="form-control mb-3" type="password" th:field="*{password}" id="password" aria-describedby="passwordHelpBlock" placeholder="Password">
-					<p class="error-msg" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+					<input class="form-control mb-3" type="password" id="password" name="password" aria-describedby="passwordHelpBlock" placeholder="Password" required>
 				</div>
 				<div class="flex-item col-sm-6 col-12">
 					<label class="register-labels" for="email">Email:</label>
-					<input class="form-control mb-3" type="text" th:field="*{email}" id="email" placeholder="johndoe@example.com">
-					<p class="error-msg" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+					<input class="form-control mb-3" type="text" id="email" name="email" placeholder="johndoe@example.com" required>
 				</div>
 				<div class="flex-item col-sm-6 col-12">
 					<label class="register-labels" for="phoneNumber">Phone Number:</label>
-					<input class="form-control mb-3" type="tel" th:field="*{phoneNumber}" id="phoneNumber" placeholder="123-456-7890">
-					<p class="error-msg" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></p>
+					<input class="form-control mb-3" type="tel" id="phoneNumber" name="phoneNumber" placeholder="123-456-7890" required>
 				</div>
 			</div>
 			<div class="col-12 col-md-6">
