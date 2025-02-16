@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+    transition-duration: 0.2s;
+}
+
+html {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    overscroll-behavior: none;
+    caret-color: transparent;
+    width: 100%;
+    /* overflow: hidden; */
+    animation: screenLock 7s ease-out forwards;
+    -webkit-user-select: none;
+    user-select: none;
+    background: var(--bg);
+    background-size: cover;
+    object-fit: cover;
+    z-index: -1;
+
+}
+
+html body {
+    background: transparent;
+    color: var(--text);
+}
+
+.table {
+    color: var(--text) !important;
+}
+
+.table-hover tbody tr:hover {
+    color: var(--nav) !important;
+}
+
+input {
+    caret-color: black;
+}
+
+canvas#neuro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    opacity: .95;
+    z-index: -1;
+}

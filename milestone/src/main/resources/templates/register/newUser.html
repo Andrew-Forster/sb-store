@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/defaultTemplate">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Registration</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+		<form class="bg-tint border-tint register-form" action="/register" th:action="@{/register}" method="post">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+			<img class="logo" th:src="@{/images/gameShopLogo.svg}" alt="Game Shop Logo of a game controller">
+			<div class="flex-container my-4">
+				<div class="flex-item col-sm-6 col-12">
+					<label class="register-labels" for="firstName">First Name:</label>
+					<input class="form-control mb-3" type="text" id="firstName" name="firstName" placeholder="John" required>
+				</div>
+				<div class="flex-item col-sm-6 col-12">
+					<label class="register-labels" for="lastName">Last Name:</label>
+					<input class="form-control mb-3" type="text" id="lastName" name="lastName" placeholder="Doe" required>
+				</div>
+				<div class="flex-item col-sm-6 col-12">
+					<label class="register-labels" for="username">Username:</label>
+					<input class="form-control mb-3" type="text" id="username" name="username" placeholder="johndoe123" required>
+				</div>
+				<div class="flex-item col-sm-6 col-12">
+					<label class="register-labels" for="password">Password:</label>
+					<input class="form-control mb-3" type="password" id="password" name="password" aria-describedby="passwordHelpBlock" placeholder="Password" required>
+				</div>
+				<div class="flex-item col-sm-6 col-12">
+					<label class="register-labels" for="email">Email:</label>
+					<input class="form-control mb-3" type="text" id="email" name="email" placeholder="johndoe@example.com" required>
+				</div>
+				<div class="flex-item col-sm-6 col-12">
+					<label class="register-labels" for="phoneNumber">Phone Number:</label>
+					<input class="form-control mb-3" type="tel" id="phoneNumber" name="phoneNumber" placeholder="123-456-7890" required>
+				</div>
+			</div>
+			<div class="col-12 col-md-6">
+				<button class="w-100 btn btn-primary" type="submit">Register</button>
+			</div>
+		</form>
+	</div>
+
+</body>
+
+</html>
+
+<style>
+	* {
+		box-sizing: border-box;
+	}
+
+
+	.register-form {
+		width: 90%;
+		max-width: 1000px;
+		border-radius: 25px;
+		margin: auto;
+		padding: 36px;
+	}
+
+	.logo {
+		width: 160px;
+		margin-top: 36px;
+	}
+
+	.flex-container {
+		display: flex;
+		flex-wrap: wrap;
+		
+	}
+
+	.flex-item {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.register-labels {
+		align-self: self-start;
+	}
+
+	.error-msg {
+		color: red;
+	}
+</style>
