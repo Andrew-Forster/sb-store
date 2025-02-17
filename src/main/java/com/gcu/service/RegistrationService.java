@@ -1,9 +1,31 @@
 package com.gcu.service;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.gcu.data.entity.UserEntity;
+import com.gcu.data.repository.UserRepositoryInterface;
 
 @Service
 public class RegistrationService implements RegistrationInterface {
+	
+	private final UserRepositoryInterface userRepository;
+	private final PasswordEncoder passwordEncoder;
+	
+	public RegistrationService(UserRepositoryInterface userRepository,
+							   PasswordEncoder passwordEncoder) {
+		this.userRepository = userRepository;
+		this.passwordEncoder = passwordEncoder;
+	}
+	
+	public boolean registerUser(UserEntity user) {
+		if (userRepository.findByUsername(user.getUsername()).isPresent())
+			return false;
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		userRepository.save(user);
+		
+		return true;
+	}
 
 	@Override
 	public boolean validUsername(String username) {

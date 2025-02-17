@@ -6,6 +6,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 @Table("USERS")
 public class UserEntity {
+	
     @Id
     private Long id;
 
@@ -26,9 +27,15 @@ public class UserEntity {
 
     @Column("phone_number")
     private String phoneNumber;
-
+    
     public UserEntity() {
         super();
+    }
+    
+    public UserEntity(Long id, String username, String password) {
+    	this.id = id;
+    	this.username = username;
+    	this.password = password;
     }
     
     public UserEntity(Long id,
@@ -101,4 +108,5 @@ public class UserEntity {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	
 }
