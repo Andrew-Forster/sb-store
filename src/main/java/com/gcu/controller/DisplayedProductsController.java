@@ -19,7 +19,7 @@ public class DisplayedProductsController {
 		this.gamesRepository = gamesRepository;
 	}
 	
-	@GetMapping("/displayedProducts")
+	@GetMapping("/products")
 	public String displayProducts(Model model) {
 		model.addAttribute("game", new ProductModel());
 		List<GameEntity> availableGames = gamesRepository.findAll();
