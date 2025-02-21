@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.gcu.data.entity.GameEntity;
 import com.gcu.data.repository.GamesRepositoryInterface;
@@ -16,6 +18,7 @@ import com.gcu.model.ProductModel;
 import jakarta.validation.Valid;
 
 @Controller
+@RequestMapping("/product")
 public class ProductController {
 
 	private final GamesRepositoryInterface gamesRepository;
@@ -25,7 +28,7 @@ public class ProductController {
 	}
 
 	// GET request to display the product creation page
-	@GetMapping("/product/create")
+	@GetMapping("/create")
 	public String productCreationDisplay(Model model) {
 		model.addAttribute("product", new ProductModel());
 		
@@ -36,7 +39,7 @@ public class ProductController {
 	}
 
 	// POST request to create a new product
-	@PostMapping("/product/create")
+	@PostMapping("/create")
 	public String createProduct(@ModelAttribute @Valid ProductModel productModel,
 			BindingResult bindingResult,
 			Model model) {
@@ -53,7 +56,7 @@ public class ProductController {
 		return "products/success";
 	}
 
-	@GetMapping("/product/edit/{id}")
+	@GetMapping("/edit/{id}")
 	public String editProduct(@PathVariable Long id, Model model) {
 		Optional<GameEntity> game = gamesRepository.findById(id);
 		if (game.isPresent()) {
@@ -63,7 +66,7 @@ public class ProductController {
 			throw new IllegalArgumentException("Invalid product ID: " + id);
 	}
 	
-	@PostMapping("/product/update")
+	@PostMapping("/update")
 	public String updateProduct(@ModelAttribute @Valid GameEntity game, 
 								BindingResult bindingResult) {
 		if (bindingResult.hasErrors())
@@ -84,7 +87,7 @@ public class ProductController {
 		return "redirect:/product/create";
 	}
 	
-	@PostMapping("/product/delete/{id}")
+	@PostMapping("/delete/{id}")
 	public String deleteProduct(@PathVariable Long id) {
 		Optional<GameEntity> game = gamesRepository.findById(id);
 		if (game.isPresent()) {
@@ -97,7 +100,7 @@ public class ProductController {
 		return "redirect:/product/create";
 	}
 
-	@GetMapping("/product/details/{id}")
+	@GetMapping("/details/{id}")
 	public String productDetails(@PathVariable Long id, Model model) {
 		Optional<GameEntity> game = gamesRepository.findById(id);
 		if (game.isPresent()) {
@@ -106,4 +109,28 @@ public class ProductController {
 		} else
 			throw new IllegalArgumentException("Invalid product ID: " + id);
 	}
+}
+
+@RestController
+@RequestMapping("/api/product")
+class ProductApiController {
+
+    private final GamesRepositoryInterface gamesRepository;
+
+    public ProductApiController(GamesRepositoryInterface gamesRepository) {
+        this.gamesRepository = gamesRepository;
+    }
+
+    // REST API for getting all products
+    @GetMapping
+    public List<GameEntity> getAllProducts() {
+        return gamesRepository.findAll();
+    }
+
+    // REST API for getting a product by id
+    @GetMapping("/{id}")
+    public GameEntity getProductById(@PathVariable Long id) {
+        return gamesRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid product ID: " + id));
+    }
 }
