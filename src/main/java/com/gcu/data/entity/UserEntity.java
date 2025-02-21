@@ -27,6 +27,9 @@ public class UserEntity {
 
     @Column("phone_number")
     private String phoneNumber;
+
+	@Column("role")
+	private String role;
     
     public UserEntity() {
         super();
@@ -44,13 +47,15 @@ public class UserEntity {
                       String firstName,
                       String lastName,
                       String email,
-                      String phoneNumber) {
+                      String phoneNumber,
+					  String role) {
         this.id = id;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+		this.role = role;
     }
 
     public Long getId() {
@@ -108,5 +113,14 @@ public class UserEntity {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	
 }
