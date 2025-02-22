@@ -4,40 +4,29 @@
 
 <head>
 	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Games</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Main Page</title>
 </head>
 
 <body>
-	<div layout:fragment="content" class="mt-5 container">
-		<h2 class="pb-4" style="color:#6f42c1">GAMES</h2>
-		
-		<table class="table-bordered table table-hover">
-			<thead>
-				<tr>
-					<th>Game</th>
-					<th>Price</th>
-					<th>Category</th>
-					<th>Description</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:if="${availableGames.empty}">
-					<td style="text-align:center" colspan=5>There are no available games</td>
-				</tr>
-				<tr th:each="game : ${availableGames}">
-					<td><h5 th:text="${game.name}"></h5></td>
-					<td><h5 th:text="${game.price}"></h5></td>
-					<td><h5 th:text="${game.category}"></h5></td>
-					<td><h5 th:text="${game.description}"></h5></td>
-					<td class="justify-content-center align-items-center">
-						<a th:href="@{/product/details/{id}(id=${game.id})}" class="w-100 btn btn-primary">View Game</a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		
+	<div layout:fragment="content">
+		<div class="d-flex flex-wrap justify-content-center container">
+			<div th:if="${availableGames.empty}">
+				<p style="text-align:center" colspan=5>There are no available games</p>
+
+			</div>
+			<div class="m-3 card" style="width: 18rem; text-align:left;" th:each="game : ${availableGames}">
+				<div class="card-header" th:text="${game.category}"></div>
+				<div class="card-body">
+					<h5 th:text="${game.name}" class="card-title"></h5>
+					<h6 th:text="${game.price}" class="mb-2 text-body-secondary card-subtitle"></h6>
+					<p th:text="${game.description}" class="card-text"></p>
+				</div>
+				<div class="card-footer">
+					<a th:href="@{/product/details/{id}(id=${game.id})}" class="w-100 btn btn-primary">View Game</a>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 
