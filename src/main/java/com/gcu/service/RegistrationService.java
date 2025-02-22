@@ -7,7 +7,7 @@ import com.gcu.data.entity.UserEntity;
 import com.gcu.data.repository.UserRepositoryInterface;
 
 @Service
-public class RegistrationService implements RegistrationInterface {
+public class RegistrationService {
 	
 	private final UserRepositoryInterface userRepository;
 	private final PasswordEncoder passwordEncoder;
@@ -22,31 +22,10 @@ public class RegistrationService implements RegistrationInterface {
 		if (userRepository.findByUsername(user.getUsername()).isPresent())
 			return false;
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setRole("CUSTOMER");
 		userRepository.save(user);
 		
 		return true;
-	}
-
-	@Override
-	public boolean validUsername(String username) {
-		// Will pull from DB to validate once DB is set up.
-		if ("customer".equals(username) || "admin".equals(username)) {
-            return false;
-        }
-        else {
-            return true;
-        }
-	}
-
-	@Override
-	public boolean validEmail(String email) {
-		// Will pull from DB to validate once DB is set up.
-		if ("test@test.com".equals(email)) {
-            return false;
-        }
-        else {
-            return true;
-        }
 	}
     
 }
