@@ -2,6 +2,7 @@ package com.gcu.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,7 +25,7 @@ public class SecurityConfig {
 						.requestMatchers("/").hasAnyRole("CUSTOMER", "MANAGER", "EMPLOYEE")
 						.requestMatchers("/product/create", "/product/edit", "/product/delete", "/product/update")
 						.hasAnyRole("MANAGER", "EMPLOYEE")
-
+						.requestMatchers("/api/**").hasRole("MANAGER")
 						.anyRequest().authenticated())
 				.formLogin(form -> form
 						.loginPage("/login")
@@ -33,7 +34,8 @@ public class SecurityConfig {
 				.logout(logout -> logout
 						.logoutUrl("/logout")
 						.logoutSuccessUrl("/login?logout")
-						.permitAll());
+						.permitAll())
+						.httpBasic(Customizer.withDefaults());
 		return http.build();
 	}
 
