@@ -23,9 +23,4 @@ public class UsersRepository {
         }
     }
 	
-    public void resetId() {
-		
-		String resetSql = "ALTER TABLE USERS AUTO_INCREMENT = 1";
-		jdbcTemplate.execute(resetSql);
-	}
 }
