@@ -10,23 +10,9 @@
 
 <body>
 	<div layout:fragment="content">
-		<div class="d-flex flex-wrap justify-content-center container">
-			<div th:if="${availableGames.empty}">
-				<p style="text-align:center" colspan=5>There are no available games</p>
-
-			</div>
-			<div class="m-3 card" style="width: 18rem; text-align:left;" th:each="game : ${availableGames}">
-				<div class="card-header" th:text="${game.category}"></div>
-				<div class="card-body">
-					<h5 th:text="${game.name}" class="card-title"></h5>
-					<h6 th:text="${game.price}" class="mb-2 text-body-secondary card-subtitle"></h6>
-					<p th:text="${game.description}" class="card-text"></p>
-				</div>
-				<div class="card-footer">
-					<a th:href="@{/product/details/{id}(id=${game.id})}" class="w-100 btn btn-primary">View Game</a>
-				</div>
-			</div>
-		</div>
+	
+		<img th:src="@{/images/mainPicture.png}" style="width:100%" alt="Temporary Placeholder"/><br />
+		
 	</div>
 </body>
 
