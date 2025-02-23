@@ -22,6 +22,7 @@ public class RegistrationService implements RegistrationInterface {
 		if (userRepository.findByUsername(user.getUsername()).isPresent())
 			return false;
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setRole("CUSTOMER");
 		userRepository.save(user);
 		
 		return true;
