@@ -4,6 +4,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+/**
+ * Class representing user entity
+ * The class is mapped to the "USERS" table
+ */
 @Table("USERS")
 public class UserEntity {
 	
@@ -31,17 +35,37 @@ public class UserEntity {
 	@Column("role")
 	private String role;
     
-    public UserEntity() {
+    /**
+     * Parameterless constructor
+     */
+	public UserEntity() {
         super();
     }
     
-    public UserEntity(Long id, String username, String password) {
+    /**
+     * Constructor with multiple parameters
+     * @param id User's id
+     * @param username User's username
+     * @param password User's password
+     */
+	public UserEntity(Long id, String username, String password) {
     	this.id = id;
     	this.username = username;
     	this.password = password;
     }
     
-    public UserEntity(Long id,
+    /**
+     * Constructor with multiple parameters
+     * @param id User's id
+     * @param username User's username
+     * @param password User's password
+     * @param firstName User's firs name
+     * @param lastName User's last name
+     * @param email User's email
+     * @param phoneNumber User's phone number
+     * @param role User's authority
+     */
+	public UserEntity(Long id,
                       String username,
                       String password,
                       String firstName,

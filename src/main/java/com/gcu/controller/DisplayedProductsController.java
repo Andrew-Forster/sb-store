@@ -10,15 +10,27 @@ import com.gcu.data.entity.GameEntity;
 import com.gcu.data.repository.GamesRepositoryInterface;
 import com.gcu.model.ProductModel;
 
+/**
+ * Controller class handling requests to the /displayedProducts endpoint.
+ */
 @Controller
 public class DisplayedProductsController {
 	
 	private final GamesRepositoryInterface gamesRepository;
 	
+	/**
+	 * Dependency injection through constructor
+	 * @param gamesRepository The repository used to retrieve game data.
+	 */
 	public DisplayedProductsController(GamesRepositoryInterface gamesRepository) {
 		this.gamesRepository = gamesRepository;
 	}
 	
+	/**
+	 * Method retrieving the list of available games from the repository and adding them to the model.
+	 * @param model Model's attributes are used to render the view.
+	 * @return The name of HTML file displaying products (displayedProducts.html).
+	 */
 	@GetMapping("/displayedProducts")
 	public String displayProducts(Model model) {
 		model.addAttribute("game", new ProductModel());

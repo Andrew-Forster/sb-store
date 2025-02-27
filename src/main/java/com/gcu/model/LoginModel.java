@@ -2,6 +2,9 @@ package com.gcu.model;
 
 import jakarta.validation.constraints.NotNull;
 
+/**
+ * Class representing a model for user login
+ */
 public class LoginModel {
 	
     @NotNull

@@ -12,7 +12,7 @@
 	<artifactId>milestone</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>milestone</name>
-	<description>Main project for week 2</description>
+	<description>Video Game Store Milestone Project</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -122,7 +122,16 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			<plugin>
+	    		<groupId>org.apache.maven.plugins</groupId>
+	    		<artifactId>maven-javadoc-plugin</artifactId>
+	    		<configuration>
+	        		<release>17</release>
+	    		</configuration>
+		</plugin>
 		</plugins>
+
 	</build>
 
 </project>

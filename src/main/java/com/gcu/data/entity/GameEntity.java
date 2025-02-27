@@ -6,6 +6,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+/**
+ * Class representing game entity stored in database.
+ * The class is mapped to the "games" table.
+ */
 @Table("games")
 public class GameEntity {
 	
@@ -24,10 +28,20 @@ public class GameEntity {
 	@Column("DESCRIPTION")
 	private String description;
 	
+	/**
+	 * Parameterless constructor
+	 */
 	public GameEntity() {
 		super();
 	}
 	
+	/**
+	 * Constructor with multiple parameters
+	 * @param name Name of the product
+	 * @param price Price of the product
+	 * @param category Category of the product
+	 * @param description Description of the product
+	 */
 	public GameEntity(String name,
 					  BigDecimal price,
 					  String category,
