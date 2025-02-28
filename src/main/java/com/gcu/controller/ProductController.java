@@ -17,17 +17,28 @@ import com.gcu.data.repository.GamesRepositoryInterface;
 import com.gcu.model.ProductModel;
 import jakarta.validation.Valid;
 
+/**
+ * Controller class handling requests to the /product endpoint.
+ */
 @Controller
 @RequestMapping("/product")
 public class ProductController {
 
 	private final GamesRepositoryInterface gamesRepository;
 
+	/**
+	 * Dependency injection through constructor.
+	 * @param gamesRepository The repository used to retrieve game data.
+	 */
 	public ProductController(GamesRepositoryInterface gamesRepository) {
 		this.gamesRepository = gamesRepository;
 	}
 
-	// GET request to display the product creation page
+	/**
+	 * GET method returning page to create, edit, or delete new product.
+	 * @param model Model's attributes are used to render the view.
+	 * @return The name of HTML file for creating a new product (productCreation.html).
+	 */
 	@GetMapping("/create")
 	public String productCreationDisplay(Model model) {
 		model.addAttribute("product", new ProductModel());
@@ -38,7 +49,13 @@ public class ProductController {
 		return "products/productCreation";
 	}
 
-	// POST request to create a new product
+	/**
+	 * POST method to create new product.
+	 * @param productModel Product data submitted by the user.
+	 * @param bindingResult Result of validation.
+	 * @param model Model's attributes are used to render the view.
+	 * @return The name of HTML file displaying success page (success.html).
+	 */
 	@PostMapping("/create")
 	public String createProduct(@ModelAttribute @Valid ProductModel productModel,
 			BindingResult bindingResult,
@@ -56,6 +73,12 @@ public class ProductController {
 		return "products/success";
 	}
 
+	/**
+	 * GET method returning the page to edit product.
+	 * @param id Product's id
+	 * @param model Model's attributes are used to render the view.
+	 * @return The name of HTML file for editing the product (productEdit.html).
+	 */
 	@GetMapping("/edit/{id}")
 	public String editProduct(@PathVariable Long id, Model model) {
 		Optional<GameEntity> game = gamesRepository.findById(id);
@@ -66,6 +89,12 @@ public class ProductController {
 			throw new IllegalArgumentException("Invalid product ID: " + id);
 	}
 	
+	/**
+	 * POST method updating an existing product.
+	 * @param game Updated product's details submitted from the form.
+	 * @param bindingResult Captures validation errors.
+	 * @return Edit page if validation fails. If successful, redirects to product creation page.
+	 */
 	@PostMapping("/update")
 	public String updateProduct(@ModelAttribute @Valid GameEntity game, 
 								BindingResult bindingResult) {
@@ -87,6 +116,11 @@ public class ProductController {
 		return "redirect:/product/create";
 	}
 	
+	/**
+	 * POST method removing the existing product.
+	 * @param id Product's id.
+	 * @return Redirects to product creation page.
+	 */
 	@PostMapping("/delete/{id}")
 	public String deleteProduct(@PathVariable Long id) {
 		Optional<GameEntity> game = gamesRepository.findById(id);
@@ -100,6 +134,12 @@ public class ProductController {
 		return "redirect:/product/create";
 	}
 
+	/**
+	 * GET method displaying product details.
+	 * @param id Product's id
+	 * @param model Model's attributes are used to render the view.
+	 * @return Name of HTML file displaying product details (productDetails.html). 
+	 */
 	@GetMapping("/details/{id}")
 	public String productDetails(@PathVariable Long id, Model model) {
 		Optional<GameEntity> game = gamesRepository.findById(id);
@@ -111,23 +151,37 @@ public class ProductController {
 	}
 }
 
+/**
+ * RestController class responsible for REST APIs.
+ */
 @RestController
 @RequestMapping("/api/product")
 class ProductApiController {
 
     private final GamesRepositoryInterface gamesRepository;
 
+    /**
+     * Dependency injection through constructor.
+     * @param gamesRepository The repository used to retrieve game data.
+     */
     public ProductApiController(GamesRepositoryInterface gamesRepository) {
         this.gamesRepository = gamesRepository;
     }
 
-    // REST API for getting all products
+    /**
+     * REST API displaying all products in JSON format.
+     * @return All products from the repository.
+     */
     @GetMapping
     public List<GameEntity> getAllProducts() {
         return gamesRepository.findAll();
     }
 
-    // REST API for getting a product by id
+    /**
+     * REST API displaying desired product by id.
+     * @param id Product's id.
+     * @return Product with specific id from the repository.
+     */
     @GetMapping("/{id}")
     public GameEntity getProductById(@PathVariable Long id) {
         return gamesRepository.findById(id)

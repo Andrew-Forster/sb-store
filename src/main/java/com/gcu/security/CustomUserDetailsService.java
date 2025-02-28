@@ -10,18 +10,27 @@ import org.springframework.stereotype.Service;
 import com.gcu.data.entity.UserEntity;
 import com.gcu.data.repository.UserRepositoryInterface;
 
+/**
+ * Service class for loading user details during authentication
+ */
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 	
 	private final UserRepositoryInterface userRepository;
-	private final PasswordEncoder passwordEncoder;
 	
-	public CustomUserDetailsService(UserRepositoryInterface userRepository,
-								    PasswordEncoder passwordEncoder) {
+	/**
+	 * Dependency injection through constructor
+	 * @param userRepository Interface for user data access
+	 */
+	public CustomUserDetailsService(UserRepositoryInterface userRepository) {
 		this.userRepository = userRepository;
-		this.passwordEncoder = passwordEncoder;
 	}
 	
+	/**
+	 * Method loading user by username
+	 * @param username Username of the user attempting to login
+	 * @return UserDetails containing user credentials and authority
+	 */
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserEntity user = userRepository.findByUsername(username)

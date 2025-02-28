@@ -6,6 +6,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
+/**
+ * Class representing model for a product
+ */
 public class ProductModel {
 
     @NotBlank(message = "Product name is required")
@@ -20,10 +23,6 @@ public class ProductModel {
 
     @NotBlank(message = "Description is required")
     private String description;
-
-    public ProductModel() {
-    	super();
-    }
 
     // Getters and Setters
     public String getName() {
